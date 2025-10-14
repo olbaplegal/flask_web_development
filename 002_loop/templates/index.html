@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Times Brasileiros</title>
+</head>
+<body>
+    <div class="conteiner">
+        <div>
+            <h1>{{ mensagem }}</h1>
+        </div>
+        <div class="tabela-conteiner">
+            <table class="tabela-estilizada">
+                <thead>
+                    <tr>
+                        <th>Times</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ultiliza-se {%%} para usar funções do python no html-->
+                    {%for time in lista%}
+                    <tr>
+                        <td>{{time}}</td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>    
+        </div>
+    </div>
+</body>
+</html>

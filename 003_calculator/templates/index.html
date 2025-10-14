@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Calculadora</h1>
+    <form method="POST">
+        <input type="number" name="num1" placeholder="Informe o 1º número" step="any" required>
+        <input type="number" name="num2" placeholder="Informe o 2º número" step="any" required>
+        <select name="operacao" required>
+            <option value="soma">+</option>
+            <option value="subtracao">-</option>
+            <option value="mult">x</option>
+            <option value="divisao">/</option>
+        </select>
+        <button type="submit">=</button>
+    </form>
+    {% if resultado is not none %}
+
+        <!--
+            resultado|string: Converte o resultado para string (caso não seja)
+            "Erro" in...: Verifica se a substring "Erro" existe no texto. Caso seja verdadeiro, adiciona a classe "erro" a tag <h2>
+            O símbolo | representa um filtro, que é usado para aplicar transformações a variáveis ou valores
+        -->
+    
+        <h2 {% if "Erro" in resultado|string %} class="erro"{% endif %}>
+            Resultado:
+            {% if resultado is number %}
+                <!-- formatando para 2 casas decimais e trocando o "." por "," -->
+                {{ "%.2f"|format(resultado)|replace(".", ",")}}
+            {% else %}
+                {{resultado}}
+            {% endif %}
+        </h2>
+    {% endif %}
+</body>
+</html>

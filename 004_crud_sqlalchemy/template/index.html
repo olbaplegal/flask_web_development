@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>sqlalchemy</title>
+</head>
+<body>
+    <div class="main">
+        <h1>Adicionar Nova Tarefa</h1>
+    
+        <form action="/criar" method="POST">
+            <input type="text" name="descricao" required>
+            <button type="submit">Criar Tarefa</button>
+        </form>
+    
+        <h1>Lista de tarefas</h1>
+        <ul>
+            {% for task in tarefas %}
+            <li>{{ task.descricao }}</li>
+    
+            <form action="/atualizar/{{task.id}}" method="POST" style="display: inline;">
+                <input type="text" name="descricao" value="{{task.descricao}}">
+                <button type="submit">Atualizar</button>
+            </form>
+    
+            <form action="/deletar/{{task.id}}" method="POST" style="display:inline;">
+                <button type="submit">Excluir</button>
+            </form>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
