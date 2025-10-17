@@ -1,4 +1,4 @@
-#flash: 
+#flash: manda uma mensagem flash no navegador
 from flask import Flask, render_template, request, redirect, flash, url_for
 
 # mysql.connector: conecta com a db
@@ -37,7 +37,7 @@ def home():
     #cursor: cria um ponteiro que permite executar queryes e processar resultados
     # o dictionary=True é para retornar as rows no formato dictonary
     cursor = conn.cursor(dictionary=True) #criando cursor
-    cursor.execute('select * from crud.users') #executando query via cursor
+    cursor.execute('select * from 005_db.users') #executando query via cursor
     data = cursor.fetchall() # buscando resultados da consulta
     cursor.close() #fechando ponteiro
     conn.close() #fechando conexão
@@ -55,13 +55,13 @@ def addUsuarios():
 
         #VALUES (%s, %s, %s): os %s são placeholders. eles não são os valores reais ainda.
         #é uma boa pratica de segurança.
-        query = 'INSERT INTO crud.users (nome, idade, cidade) VALUES (%s, %s, %s)'
+        query = 'INSERT INTO 005_db.users (nome, idade, cidade) VALUES (%s, %s, %s)'
         cursor.execute(query, (nome, idade, cidade)) #NÃO FICOU MARCADO. REVISAR
         conn.commit() #salvando as alterações na db
         cursor.close()
         conn.close()
         flash('Usuário cadastrado com sucesso!', 'sucesso')
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     return render_template('add.html')
 
 #UPDATE
@@ -75,16 +75,16 @@ def editUsuarios(id):
         idade = request.form['idade']
         cidade = request.form['cidade']
 
-        query = 'UPDATE crud.users SET nome = %s, idade = %s, cidade = %s WHERE id = %s'
+        query = 'UPDATE 005_db.users SET nome = %s, idade = %s, cidade = %s WHERE id = %s'
         cursor.execute(query, (nome, idade, cidade, id))
         conn.commit()
         cursor.close()
         conn.close()
         flash('Usuário atualizado com sucesso!', 'sucesso')
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     
     #puxar os dados para edição (GET)
-    select_query = 'SELECT * FROM crud.users WHERE id = %s'
+    select_query = 'SELECT * FROM 005_db.users WHERE id = %s'
 
     #cursor.execute(select_query, (id,)): executa a consulta. note que a virgula
     # em(id,). ela é essencial para que o python crie uma tupla de um único
@@ -102,13 +102,13 @@ def editUsuarios(id):
 def deleteUsuarios(id):
     conn = mysql.connector.connect(**db_config)
     cursor = conn.cursor(dictionary=True)
-    delete_query = 'DELETE FROM crud.users WHERE id = %s'
+    delete_query = 'DELETE FROM 005_db.users WHERE id = %s'
     cursor.execute(delete_query, (id,))
     conn.commit()
     cursor.close()
     conn.close()
     flash('Usuário deletado com sucesso!', 'sucesso')
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
 if __name__ == '__main__':
     app.run(debug=True)
