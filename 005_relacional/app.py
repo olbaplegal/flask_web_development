@@ -81,7 +81,7 @@ def editUsuarios(id):
         cursor.close()
         conn.close()
         flash('Usuário atualizado com sucesso!', 'sucesso')
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     
     #puxar os dados para edição (GET)
     select_query = 'SELECT * FROM crud.users WHERE id = %s'
@@ -108,7 +108,7 @@ def deleteUsuarios(id):
     cursor.close()
     conn.close()
     flash('Usuário deletado com sucesso!', 'sucesso')
-    return redirect(url_for('home'))
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
