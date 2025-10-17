@@ -60,7 +60,7 @@ def addUsuarios():
         conn.commit() #salvando as alterações na db
         cursor.close()
         conn.close()
-        flash('Usuário cadastrado com sucesso!', 'sucesso')
+        flash('Usuário cadastrado com sucesso!', 'sucesso') #mensagem flash que será enviada
         return redirect(url_for('home'))
     return render_template('add.html')
 
@@ -81,7 +81,7 @@ def editUsuarios(id):
         cursor.close()
         conn.close()
         flash('Usuário atualizado com sucesso!', 'sucesso')
-        return redirect(url_for('home'))
+        return redirect(url_for('home')) #esse home se refere a def home que esta na rota raiz
     
     #puxar os dados para edição (GET)
     select_query = 'SELECT * FROM 005_db.users WHERE id = %s'

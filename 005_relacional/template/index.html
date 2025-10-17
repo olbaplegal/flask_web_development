@@ -8,6 +8,7 @@
 <body>
     <!-- para as mensagens em flash funcionarem é necessario o código abaixo -->
     <h4>
+        <!-- botando a mensagem flash em uma variavel -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
