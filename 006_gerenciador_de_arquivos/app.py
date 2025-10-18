@@ -1,3 +1,7 @@
+#o render_template se não for expecificado em que pagina esta o template ele vai 
+# buscar por padrão a pasta chamada 'templates'. dito isso é bom começar a nomear
+# a pasta de templates como 'templates'
+
 from flask import Flask, render_template, request, redirect, url_for, send_from_directory
 
 #import os: Importa a biblioteca "os", que permite interagir com o sistema
@@ -7,8 +11,8 @@ import os
 # passa o filename e retonar uma versão segura dele
 from werkzeug.utils import secure_filename
 
-app = Flask(__name__)
-UPLOAD_FOLDER = "D:\\vault\dev\\flask\\006_gerenciador_de_arquivos>\\downloads"
+app = Flask(__name__, static_folder='static')
+UPLOAD_FOLDER = "D:\\vault\dev\\flask\\006_gerenciador_de_arquivos\downloads"
 
 #os.listdir(UPLOAD_FOLDER): Usa a biblioteca "os" para uma lista com os nomes de
 # tudo que esta dentro da pasta UPLOAD_FOLDER
@@ -23,7 +27,7 @@ def index():
         caminho = os.path.join(UPLOAD_FOLDER, nome_arquivo)
         if os.path.isfile(caminho):
             arquivos.append(nome_arquivo)
-        return render_template('index.html', arquivos=arquivos)
+    return render_template('index.html', arquivos=arquivos)
 
 #UPLOAD
 @app.route('/diretorio', methods=['POST'])

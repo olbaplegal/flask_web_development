@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Gerenciador de Arquivos</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload de Arquivos</h2>
+        <form action="/diretorio" method="POST" enctype="multipart/form-data">
+            <input type="file" id="meuArquivo" name="meuArquivo" required>
+            <button type="submit">Enviar</button>
+        </form>
+
+        <h2>Arquivos para Download</h2>
+        <div class="file-list">
+            {% if arquivos %}
+                {% for arquivo in arquivos %}
+                    <div class="file-item">
+                        <span class="file-name">{{ arquivo }}</span>
+                        <a href="{{ url_for('download', filename=arquivo) }}">Download</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="empty-message">Nenhum arquivo disponível</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

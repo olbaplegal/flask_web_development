@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1/1;
+    padding: 40px;
+    border: 1px solid #e0e0e0;
+    box-shadow: #b9b9b9 0 0 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-weight: 500;
+    margin-bottom: 25px;
+    color: #000;
+    font-size: 1.3rem;
+}
+
+form {
+    margin-bottom: 30px;
+}
+
+input[type="file"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 8px 0;
+}
+
+button {
+    background: #000;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+button:hover {
+    background: #333;
+}
+
+.file-list {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.file-name {
+    flex: 1;
+    font-size: 14px;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.empty-message {
+    color: #666;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* Scrollbar minimalista */
+.file-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.file-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.file-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+}
+
+.file-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
