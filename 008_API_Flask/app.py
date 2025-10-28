@@ -2,6 +2,7 @@ from apiflask import APIFlask, Schema, fields
 from apiflask.validators import Length
 import mysql.connector
 from mysql.connector import errorcode
+from flask import render_template
 
 #Configurações do BD
 db_config = {
@@ -54,6 +55,7 @@ def inicia_db():
             conn.commit()
             cursor.close()
             conn.close()
+
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print('Erro - Verifique seu nome de usuário ou senha')
@@ -77,7 +79,13 @@ class LivroOutSchema(Schema):
     titulo = fields.String()
     autor = fields.String()
 
-app = APIFlask(__name__, title='API de Livros - Versão 01')
+#Inicia o flask
+app = APIFlask(__name__, title='API de Livros', template_folder='templates', static_folder='static')
+
+@app.get('/')
+@app.doc(hide=True) #esconde o endpoint do Swagger
+def index():
+    return render_template('index.html')
 
 #ENDPOINT POST
 @app.post('/livros')

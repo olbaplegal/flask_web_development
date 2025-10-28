@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+</head>
+<body>
+    <div>
+        <h1>Biblioteca Virtual</h1>
+
+        <h2>Adicionar Novo Livro</h2>
+        <form id="form-livro">
+            <input type="text" id="titulo" placeholder="Informe o título do Livro" required>
+            <input type="text" id="autor" placeholder="Informe o Autor do Livro" required>
+            <button type="submit">Adicionar Livro</button>
+        </form>
+
+        <h2>Lista de Livros</h2>
+        <ul id="lista-livros"></ul>
+    </div>
+    <script src="{{url_for('static', filename='js/livros.js')}}"></script>
+</body>
+</html>
