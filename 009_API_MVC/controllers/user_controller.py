@@ -21,4 +21,4 @@ def configure_routes(app):
 
         # Chamando função para adicionar um usuário novo
         User.criar_usuario(name, email)
-        return redirect(url_for('index'))
+        return redirect(url_for('index')) # Redirecionando para index
