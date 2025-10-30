@@ -3,7 +3,7 @@ from models.login import Login
 
 # Importa a função que compara uma senha em texto puro com o hash armazenado no BD. É par dafunção generate_password_hash.
 from werkzeug.security import check_password_hash
-from email_validator import validate_email, EmailNotValidErro
+from email_validator import validate_email, EmailNotValidError
 
 # Rota principal e de login
 def configura_rotas(app):
@@ -73,10 +73,13 @@ def configura_rotas(app):
 
                     flash('Você foi registrado com sucesso! Faça o login.')
                     return redirect(url_for('login'))
-                except request.method == 'POST':
-                    msg='Por favor, preencha o formulário.'
+                except EmailNotValidError:
+                    msg = 'Endereço de e-mail inválido.'
 
-                return render_template('registro.html', msg=msg)
+        elif request.method == 'POST':
+            msg='Por favor, preencha o formulário.'
+
+        return render_template('registro.html', msg=msg)
     
     # As rotas abaixo implementam o controle de acesso
     # if 'loggedin' in session: A primeira coisa que a função faz é verificar se a chage 'loggedin' existe na session 

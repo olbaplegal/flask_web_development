@@ -5,7 +5,7 @@ app = Flask(__name__, template_folder='views/templates', static_folder='views/st
 
 # Carrega as informações do arquivo config.py
 # Carrega as informações da SECRET_KEY e DB_CONFIG para dentro do objeto de configuração da aplicação
-app.config.from_object('config.Confic')
+app.config.from_object('config.Config')
 
 login_controller.configura_rotas(app)
 

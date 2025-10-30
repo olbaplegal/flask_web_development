@@ -20,7 +20,7 @@ class Login:
         if conn:
             cursor = conn.cursor(dictionary=True)
             cursor.execute('SELECT * FROM login_usuarios.usuarios WHERE email = %s', (email,))
-            usuario = cursor.fetchall() # Retorna todas as respostas da consulta
+            usuario = cursor.fetchone() # Retorna a primeira da consulta
             cursor.close()
             conn.close()
             return usuario
@@ -30,8 +30,8 @@ class Login:
         conn = inicia_bd()
         if conn:
             cursor = conn.cursor(dictionary=True)
-            cursor.execute('SELECT * FROM login_usuarios.usuarios WHERE id = %s', (user_id))
-            usuario = cursor.fetchall()
+            cursor.execute('SELECT * FROM login_usuarios.usuarios WHERE id = %s', (user_id,))
+            usuario = cursor.fetchone()
             cursor.close()
             conn.close()
             return usuario
