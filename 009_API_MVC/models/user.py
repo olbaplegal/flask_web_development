@@ -10,6 +10,7 @@ def inicia_bd():
         return None
     
 class User:
+    # get_usuarios faz a query para pegar os usuários e retorna os users em uma lista
     @staticmethod
     def get_usuarios():
         users = []
@@ -27,6 +28,7 @@ class User:
         return users
     
     @staticmethod
+    # criar_usuario faz o insert dos dados no bd
     def criar_usuario(name, email):
         conn = inicia_bd()
         if conn:
