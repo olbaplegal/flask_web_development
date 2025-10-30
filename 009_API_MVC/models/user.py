@@ -18,13 +18,13 @@ class User:
             cursor = conn.cursor(dictionary=True) # Criando cursor no formato dictionary
             try:
                 cursor.execute('SELECT * FROM bd_mvc.users')
-                user = cursor.fetchall()
+                users = cursor.fetchall()
             except mysql.connector.Error as err:
                 print(f'Erro ao buscar usuários: {err}')
             finally:
                 cursor.close()
                 conn.close()
-            return users
+        return users
     
     @staticmethod
     def criar_usuario(name, email):
