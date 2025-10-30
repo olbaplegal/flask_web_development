@@ -1,0 +1,12 @@
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+body{
+    background-color: antiquewhite;
+    text-align: center;
+}
