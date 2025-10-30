@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('home')}}">home</a>
+        <a href="{{ url_for('perfil')}}">Ver Perfil</a>
+        <a href="{{ url_for('logout')}}">Logout</a>
+    </nav>
+    <hr>
+    <h2>Perfil do Usuário</h2>
+    <p><strong>ID:</strong> {{ usuario.id }}</p>
+    <p><strong>Nome:</strong> {{ usuario.nome }}</p>
+    <p><strong>E-mail:</strong> {{ usuario.email }}</p>
+</body>
+</html>
